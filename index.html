@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Sommerkarte – Genuss unter freiem Himmel" />
+    <meta name="description" content="Sommerkarte – Frische Küche & Genuss unter freiem Himmel" />
     <title>Sommerkarte</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,21 +20,20 @@
             padding: 0;
         }
 
-        /* ── Design Tokens ── */
         :root {
             --sun: #f59e0b;
-            --sun-soft: #fde68a;
-            --sky: #0ea5e9;
-            --leaf: #16a34a;
-            --sand: #fef3c7;
+            --sun-light: #fde68a;
+            --sun-pale: #fffbeb;
             --warm: #78350f;
             --warm-mid: #92400e;
+            --leaf: #16a34a;
+            --sky: #0ea5e9;
             --text: #1c1917;
             --muted: #78716c;
-            --line: rgba(120, 83, 30, 0.15);
-            --card-bg: rgba(255, 252, 245, 0.92);
-            --radius: 16px;
-            --max-w: 480px;
+            --line: rgba(120, 83, 30, 0.13);
+            --card-bg: rgba(255, 253, 247, 0.94);
+            --radius: 14px;
+            --max-w: 500px;
         }
 
         html {
@@ -42,17 +41,17 @@
         }
 
         body {
-            background: linear-gradient(160deg, #fff9e6 0%, #fef3c7 40%, #ecfdf5 100%);
+            background: linear-gradient(170deg, #fffbeb 0%, #fef9ec 50%, #f0fdf4 100%);
             color: var(--text);
             font-family: 'Inter', sans-serif;
             min-height: 100svh;
         }
 
-        /* ── Hero ── */
+        /* ─── HERO ─── */
         .hero {
             position: relative;
             width: 100%;
-            height: clamp(220px, 50vw, 320px);
+            height: clamp(210px, 48vw, 300px);
             overflow: hidden;
         }
 
@@ -60,16 +59,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 40%;
+            object-position: center 42%;
             display: block;
         }
 
         .hero__overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom,
-                    rgba(0, 0, 0, 0.08) 0%,
-                    rgba(0, 0, 0, 0.45) 100%);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.52) 100%);
         }
 
         .hero__text {
@@ -77,7 +74,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 20px 20px 24px;
+            padding: 18px 20px 22px;
             text-align: center;
             color: #fff;
         }
@@ -86,37 +83,37 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--sun-soft);
-            margin-bottom: 6px;
+            color: var(--sun-light);
+            margin-bottom: 5px;
         }
 
         .hero__eyebrow::before,
         .hero__eyebrow::after {
             content: '';
             display: inline-block;
-            width: 20px;
+            width: 18px;
             height: 1px;
-            background: var(--sun-soft);
+            background: var(--sun-light);
         }
 
         .hero__title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 8vw, 3rem);
+            font-size: clamp(2rem, 9vw, 3.2rem);
             font-weight: 600;
             line-height: 1.1;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.38);
         }
 
         .hero__sub {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: rgba(255, 255, 255, 0.78);
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
-        /* ── Order Notice ── */
+        /* ─── ORDER BANNER ─── */
         .order-banner {
             display: flex;
             align-items: center;
@@ -124,57 +121,129 @@
             gap: 8px;
             background: var(--sun);
             color: var(--warm);
-            padding: 11px 16px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
+            padding: 12px 16px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-align: center;
         }
 
-        /* ── Main Layout ── */
+        /* ─── NAV TABS ─── */
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 0;
+            background: #fff8e8;
+            border-bottom: 2px solid var(--line);
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tab {
+            flex-shrink: 0;
+            padding: 11px 14px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: none;
+            background: none;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .nav-tab.active {
+            color: var(--warm);
+            border-bottom-color: var(--sun);
+        }
+
+        /* ─── SECTIONS ─── */
+        .tab-section {
+            display: none;
+        }
+
+        .tab-section.active {
+            display: block;
+        }
+
         .menu-page {
             max-width: var(--max-w);
             margin: 0 auto;
-            padding: 24px 16px 60px;
+            padding: 20px 14px 56px;
         }
 
-        /* ── Section Header ── */
-        .section-head {
+        /* ─── TIME BADGE ─── */
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--sun-light);
+            color: var(--warm);
+            font-size: 0.69rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        /* ─── SUBSECTION HEADER ─── */
+        .sub-head {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin: 32px 0 16px;
+            gap: 10px;
+            margin: 22px 0 12px;
         }
 
-        .section-head:first-of-type {
-            margin-top: 8px;
+        .sub-head:first-of-type {
+            margin-top: 4px;
         }
 
-        .section-head__icon {
-            font-size: 1.3rem;
+        .sub-head__emoji {
+            font-size: 1.15rem;
             line-height: 1;
         }
 
-        .section-head__label {
+        .sub-head__label {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--warm);
             flex: 1;
         }
 
-        .section-head__line {
+        .sub-head__line {
             flex: 1;
             height: 1px;
             background: var(--line);
         }
 
-        /* ── Menu Item ── */
+        /* ─── MENU CARD ─── */
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(120, 83, 30, 0.06);
+            margin-bottom: 10px;
+        }
+
+        /* ─── MENU ITEM ─── */
         .menu-item {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 12px;
-            padding: 14px 0;
+            gap: 10px;
+            padding: 13px 16px;
             border-bottom: 1px solid var(--line);
         }
 
@@ -189,17 +258,17 @@
 
         .item__name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.05rem;
+            font-size: 1.04rem;
             font-weight: 600;
             color: var(--text);
             line-height: 1.3;
         }
 
         .item__desc {
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             color: var(--muted);
             margin-top: 3px;
-            line-height: 1.55;
+            line-height: 1.5;
         }
 
         .item__tags {
@@ -210,11 +279,11 @@
         }
 
         .tag {
-            font-size: 0.62rem;
+            font-size: 0.6rem;
             letter-spacing: 0.06em;
-            padding: 2px 7px;
+            padding: 2px 8px;
             border-radius: 50px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .tag--veg {
@@ -232,52 +301,144 @@
             color: #b91c1c;
         }
 
-        .tag--new {
-            background: var(--sand);
-            color: var(--warm-mid);
+        .tag--best {
+            background: var(--sun-light);
+            color: var(--warm);
+        }
+
+        .tag--free {
+            background: #d1fae5;
+            color: #065f46;
         }
 
         .item__price {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             font-weight: 600;
             color: var(--warm);
             white-space: nowrap;
             padding-top: 2px;
+            text-align: right;
         }
 
-        /* ── Divider ── */
-        .sunburst {
+        .item__price small {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--muted);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Portions row */
+        .portions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 10px 16px 14px;
+        }
+
+        .portion-chip {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 0.75rem;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .portion-chip strong {
+            display: block;
+            color: var(--warm);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+        }
+
+        /* ─── SPECIAL CARDS ─── */
+        /* Mittagsmenü highlight */
+        .lunch-card {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 1.5px solid var(--sun);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.12);
+        }
+
+        .lunch-card__icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .lunch-card__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--warm);
+        }
+
+        .lunch-card__body {
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+
+        .lunch-card__price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--warm);
+            margin-top: 12px;
+        }
+
+        .lunch-card__includes {
+            font-size: 0.7rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* ─── NOTICE ─── */
+        .notice {
+            background: var(--sun-pale);
+            border: 1px solid var(--sun-light);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.76rem;
+            color: var(--muted);
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .notice__icon {
+            flex-shrink: 0;
+        }
+
+        /* ─── SUN DIVIDER ─── */
+        .sun-divider {
             text-align: center;
             color: var(--sun);
-            font-size: 1.1rem;
-            margin: 28px 0 0;
-            letter-spacing: 6px;
+            margin: 20px 0 0;
+            font-size: 0.9rem;
+            letter-spacing: 8px;
         }
 
-        /* ── Footer ── */
+        /* ─── FOOTER ─── */
         .site-footer {
             text-align: center;
-            padding: 0 16px 40px;
+            padding: 0 16px 44px;
             color: var(--muted);
-            font-size: 0.72rem;
-            line-height: 1.7;
-        }
-
-        /* ── Subtle card wrapper ── */
-        .menu-section {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 4px 16px 8px;
-            box-shadow: 0 2px 20px rgba(120, 83, 30, 0.06);
-            border: 1px solid var(--line);
+            font-size: 0.7rem;
+            line-height: 1.8;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ── Hero ── -->
+    <!-- ─── HERO ─── -->
     <header class="hero">
         <img class="hero__img" src="hero.png" alt="Sommerterrasse" />
         <div class="hero__overlay"></div>
@@ -288,147 +449,616 @@
         </div>
     </header>
 
-    <!-- ── Order Notice ── -->
+    <!-- ─── ORDER BANNER ─── -->
     <div class="order-banner" role="note" aria-label="Bestellhinweis">
         🍹&ensp;Bitte bestellen Sie an der Bar
     </div>
 
-    <!-- ── Menu ── -->
-    <main class="menu-page">
+    <!-- ─── NAV TABS ─── -->
+    <nav class="nav-tabs" role="tablist" aria-label="Menükategorien">
+        <button class="nav-tab active" role="tab" onclick="switchTab('getraenke', this)">🍾 Getränke</button>
+        <button class="nav-tab" role="tab" onclick="switchTab('fruehstueck', this)">☕ Frühstück</button>
+        <button class="nav-tab" role="tab" onclick="switchTab('mittag', this)">🥗 Mittag</button>
+        <button class="nav-tab" role="tab" onclick="switchTab('snacks', this)">🍟 Snacks</button>
+        <button class="nav-tab" role="tab" onclick="switchTab('sweet', this)">🍦 Sweet Spot</button>
+        <button class="nav-tab" role="tab" onclick="switchTab('alacarte', this)">🍔 À la carte</button>
+    </nav>
 
-        <!-- VORSPEISEN -->
-        <div class="section-head">
-            <span class="section-head__icon">🌿</span>
-            <h2 class="section-head__label">Vorspeisen</h2>
-            <div class="section-head__line"></div>
-        </div>
-        <div class="menu-section">
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Gericht 1</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
-                    <div class="item__tags"><span class="tag tag--new">Neu</span></div>
-                </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Gericht 2</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
-                </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-        </div>
+    <main>
 
-        <div class="sunburst">· · ☀️ · ·</div>
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- TAB: GETRÄNKE -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="tab-getraenke" class="tab-section active" aria-label="Getränke">
+            <div class="menu-page">
 
-        <!-- HAUPTGERICHTE -->
-        <div class="section-head">
-            <span class="section-head__icon">🍽️</span>
-            <h2 class="section-head__label">Hauptgerichte</h2>
-            <div class="section-head__line"></div>
-        </div>
-        <div class="menu-section">
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Gericht 1</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
-                    <div class="item__tags"><span class="tag tag--fish">Fisch</span></div>
-                </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Gericht 2</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
-                    <div class="item__tags"><span class="tag tag--veg">Vegetarisch</span></div>
-                </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Gericht 3</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
-                </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-        </div>
+                <div class="time-badge">🕐 Ganze Tag erhältlich</div>
 
-        <div class="sunburst">· · ☀️ · ·</div>
+                <!-- Spritz & Aperitif -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🍾</span>
+                    <h2 class="sub-head__label">Spritz &amp; Aperitif</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Aperol Spritz</div>
+                            <div class="item__desc">Aperol, Prosecco, Sodawasser &amp; Orange</div>
+                        </div>
+                        <div class="item__price">CHF 12.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Hugo Spritz</div>
+                            <div class="item__desc">Holunderblütensirup, Prosecco, Minze &amp; Zitrone</div>
+                        </div>
+                        <div class="item__price">CHF 11.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Lillet Wildberry</div>
+                            <div class="item__desc">Lillet Wildberry, Wildberry Tonic &amp; Sodawasser</div>
+                        </div>
+                        <div class="item__price">CHF 11.–</div>
+                    </div>
+                </div>
 
-        <!-- SALATE & SNACKS -->
-        <div class="section-head">
-            <span class="section-head__icon">🥗</span>
-            <h2 class="section-head__label">Salate &amp; Snacks</h2>
-            <div class="section-head__line"></div>
-        </div>
-        <div class="menu-section">
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Gericht 1</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
-                    <div class="item__tags"><span class="tag tag--veg">Vegetarisch</span></div>
-                </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Gericht 2</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
-                </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-        </div>
+                <div class="sun-divider">· · ☀️ · ·</div>
 
-        <div class="sunburst">· · ☀️ · ·</div>
+                <!-- Cocktails -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🍹</span>
+                    <h2 class="sub-head__label">Cocktails</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Mojito</div>
+                            <div class="item__desc">Weißer Rum, Minze, Limette &amp; Rohrzucker Soda</div>
+                        </div>
+                        <div class="item__price">CHF 14.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Caipirinha</div>
+                            <div class="item__desc">Cachaça, Limette &amp; brauner Rohrzucker Soda</div>
+                        </div>
+                        <div class="item__price">CHF 14.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Amaretto Sour</div>
+                            <div class="item__desc">Amaretto, Zitronensaft &amp; Schaum</div>
+                        </div>
+                        <div class="item__price">CHF 14.–</div>
+                    </div>
+                </div>
+                <div class="notice">
+                    <span class="notice__icon">✨</span>
+                    Alle Cocktails werden frisch zubereitet.
+                </div>
 
-        <!-- DESSERTS -->
-        <div class="section-head">
-            <span class="section-head__icon">🍋</span>
-            <h2 class="section-head__label">Desserts</h2>
-            <div class="section-head__line"></div>
-        </div>
-        <div class="menu-section">
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Gericht 1</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
-                </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Gericht 2</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
-                </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-        </div>
+                <div class="sun-divider">· · ☀️ · ·</div>
 
-        <div class="sunburst">· · ☀️ · ·</div>
+                <!-- Bier -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🍺</span>
+                    <h2 class="sub-head__label">Bier</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Bier</div>
+                            <div class="item__desc">500 ml</div>
+                        </div>
+                        <div class="item__price">CHF 7.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Bier</div>
+                            <div class="item__desc">300 ml</div>
+                        </div>
+                        <div class="item__price">CHF 5.–</div>
+                    </div>
+                </div>
 
-        <!-- GETRÄNKE -->
-        <div class="section-head">
-            <span class="section-head__icon">🥂</span>
-            <h2 class="section-head__label">Getränke</h2>
-            <div class="section-head__line"></div>
-        </div>
-        <div class="menu-section">
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Getränk 1</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
+                <div class="sun-divider">· · ☀️ · ·</div>
+
+                <!-- Getränke (Flasche) -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🥤</span>
+                    <h2 class="sub-head__label">Getränke</h2>
+                    <div class="sub-head__line"></div>
                 </div>
-                <div class="item__price">CHF –.–</div>
-            </div>
-            <div class="menu-item">
-                <div class="item__info">
-                    <div class="item__name">Getränk 2</div>
-                    <div class="item__desc">Beschreibung folgt …</div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Mineralwasser</div>
+                            <div class="item__desc">500 ml Flasche</div>
+                        </div>
+                        <div class="item__price">CHF 5.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Softdrink</div>
+                            <div class="item__desc">500 ml Flasche</div>
+                        </div>
+                        <div class="item__price">CHF 5.–</div>
+                    </div>
                 </div>
-                <div class="item__price">CHF –.–</div>
+
+                <div class="sun-divider">· · ☀️ · ·</div>
+
+                <!-- Heissgetränke -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">☕</span>
+                    <h2 class="sub-head__label">Heissgetränke</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Espresso</div>
+                        </div>
+                        <div class="item__price">CHF 4.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Kaffee Crème</div>
+                        </div>
+                        <div class="item__price">CHF 4.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Cappuccino</div>
+                        </div>
+                        <div class="item__price">CHF 5.20</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Milchkaffee</div>
+                        </div>
+                        <div class="item__price">CHF 5.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Latte Macchiato</div>
+                        </div>
+                        <div class="item__price">CHF 6.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Tee</div>
+                        </div>
+                        <div class="item__price">CHF 4.50</div>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- TAB: FRÜHSTÜCK -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="tab-fruehstueck" class="tab-section" aria-label="Frühstück">
+            <div class="menu-page">
+
+                <div class="time-badge">🕗 08:00 – 11:00 Uhr</div>
+
+                <!-- Frühstücks-Combos -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">☕</span>
+                    <h2 class="sub-head__label">Frühstücks-Combos</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="notice" style="margin-bottom:12px">
+                    <span class="notice__icon">🎁</span>
+                    Komplett &amp; sorglos – Kaffee inklusive!
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Sportler-Power</div>
+                            <div class="item__desc">Rühreier mit Speck (2 Eier, 3 Scheiben knuspriger Speck), 2 Scheiben
+                                geröstetes Weißbrot mit Butter, Kaffee nach freier Wahl</div>
+                            <div class="item__tags">
+                                <span class="tag tag--best">⭐ Bestseller</span>
+                            </div>
+                        </div>
+                        <div class="item__price">CHF 13.90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Schweizer Klassiker</div>
+                            <div class="item__desc">Schinken-Salami-Platte (80 g gemischter Aufschnitt), 2 Scheiben
+                                Vollkornbrot mit Butter, Kaffee nach freier Wahl</div>
+                        </div>
+                        <div class="item__price">CHF 13.90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Gipfeli-Genuss</div>
+                            <div class="item__desc">3 frische Gipfeli, Butter &amp; 3 Konfitüren zur Auswahl, Kaffee
+                                nach freier Wahl</div>
+                        </div>
+                        <div class="item__price">CHF 12.90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Käse-Liebhaber 🌱</div>
+                            <div class="item__desc">Käseplatte (80 g Emmentaler/Appenzeller), 2 Scheiben Vollkornbrot
+                                mit Butter, Kaffee nach freier Wahl</div>
+                            <div class="item__tags"><span class="tag tag--veg">Vegetarisch</span></div>
+                        </div>
+                        <div class="item__price">CHF 12.90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Kaffee-Gipfeli</div>
+                            <div class="item__desc">1 frisches Gipfeli, Kaffee nach freier Wahl – Perfekt für unterwegs
+                            </div>
+                        </div>
+                        <div class="item__price">CHF 6.50</div>
+                    </div>
+                </div>
+
+                <div class="sun-divider">· · ☀️ · ·</div>
+
+                <!-- Warme Speisen -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🍳</span>
+                    <h2 class="sub-head__label">Warme Speisen</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Rühreier mit Speck und Brot</div>
+                            <div class="item__desc">3 Eier cremig gerührt, 3 Scheiben knuspriger Speck, 2 Scheiben
+                                geröstetes Weißbrot mit Butter</div>
+                        </div>
+                        <div class="item__price">CHF 11.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Rühreier mit Brot</div>
+                            <div class="item__desc">3 Eier cremig gerührt mit Butter, 2 Scheiben geröstetes Weißbrot mit
+                                Butter</div>
+                        </div>
+                        <div class="item__price">CHF 8.90</div>
+                    </div>
+                </div>
+
+                <div class="sun-divider">· · ☀️ · ·</div>
+
+                <!-- Kalte Platten -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🧀</span>
+                    <h2 class="sub-head__label">Kalte Platten</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Aufschnitt &amp; Käse Platte mit Brot</div>
+                            <div class="item__desc">Für den grossen Hunger. 80 g Aufschnitt gemischt, 60 g Käse, 2
+                                Scheiben Vollkornbrot mit Butter</div>
+                        </div>
+                        <div class="item__price">CHF 12.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Schinken-Salami-Platte mit Brot</div>
+                            <div class="item__desc">80 g gemischter Aufschnitt (Schinken &amp; Salami), 2 Scheiben
+                                Vollkornbrot mit Butter</div>
+                        </div>
+                        <div class="item__price">CHF 9.90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Käseplatte mit Brot 🌱</div>
+                            <div class="item__desc">80 g Käse in Scheiben (Emmentaler/Appenzeller), 2 Scheiben
+                                Vollkornbrot mit Butter</div>
+                            <div class="item__tags"><span class="tag tag--veg">Vegetarisch</span></div>
+                        </div>
+                        <div class="item__price">CHF 8.90</div>
+                    </div>
+                </div>
+
+                <div class="sun-divider">· · ☀️ · ·</div>
+
+                <!-- Gipfeli & Brot -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🥐</span>
+                    <h2 class="sub-head__label">Gipfeli &amp; Brot</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">3 Gipfeli mit Butter &amp; Konfitüre</div>
+                            <div class="item__desc">3 frische Gipfeli, Butter, 2 Konfitüren zur Auswahl</div>
+                        </div>
+                        <div class="item__price">CHF 9.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">2 Scheiben Brot mit Butter &amp; Konfitüre</div>
+                            <div class="item__desc">Weißbrot oder Vollkornbrot, Butter, Konfitüre</div>
+                        </div>
+                        <div class="item__price">CHF 5.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">1 Gipfeli</div>
+                        </div>
+                        <div class="item__price">CHF 2.50</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- TAB: MITTAGSMENÜ -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="tab-mittag" class="tab-section" aria-label="Mittagsmenü">
+            <div class="menu-page">
+
+                <div class="time-badge">🕦 11:30 – 14:00 Uhr · Mo – Fr</div>
+
+                <div class="lunch-card">
+                    <div class="lunch-card__icon">🥗</div>
+                    <div class="lunch-card__title">Tagesmenü</div>
+                    <div class="lunch-card__body">
+                        Täglich wechselndes Mittagsmenü –<br>Jeden Tag ein frisches Gericht.<br><br>
+                        <strong>Inklusiv:</strong> Salat &amp; Softdrink nach Wahl.
+                    </div>
+                    <div class="lunch-card__price">CHF 19.90</div>
+                    <div class="lunch-card__includes">inkl. Salat &amp; Softdrink</div>
+                </div>
+
+                <div class="notice" style="margin-top: 16px;">
+                    <span class="notice__icon">🗒️</span>
+                    Das aktuelle Tagesmenü erfährst du an der Bar oder auf unserer Tafel.
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- TAB: SNACKS -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="tab-snacks" class="tab-section" aria-label="Snack-Karte">
+            <div class="menu-page">
+
+                <div class="time-badge">🕑 Ab 14:00 Uhr bis Feierabend</div>
+
+                <!-- Lumpias -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🌯</span>
+                    <h2 class="sub-head__label">Rindfleisch-Lumpias</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Hausgemachte Rindfleisch-Lumpias</div>
+                            <div class="item__desc">Knusprig frittierte Lumpias mit Rindfleischfüllung. Das Haus
+                                Special.</div>
+                            <div class="item__tags"><span class="tag tag--best">🏠 Haus Special</span></div>
+                        </div>
+                    </div>
+                    <div class="portions">
+                        <div class="portion-chip"><strong>CHF 4.50</strong>1 Stück</div>
+                        <div class="portion-chip"><strong>CHF 13.–</strong>3er Portion</div>
+                        <div class="portion-chip"><strong>CHF 21.–</strong>5er Portion</div>
+                    </div>
+                </div>
+
+                <div class="sun-divider">· · ☀️ · ·</div>
+
+                <!-- Pommes & Kartoffeln -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🍟</span>
+                    <h2 class="sub-head__label">Pommes &amp; Kartoffeln</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Pommes Frites Knusprig</div>
+                            <div class="item__desc">Frische Pommes, goldbraun frittiert. Serviert mit Ketchup und Mayo.
+                                (250 g)</div>
+                        </div>
+                        <div class="item__price">CHF 7.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Patatas Bravas</div>
+                            <div class="item__desc">Knusprige Kartoffeln mit pikanter Sauce. (200 g)</div>
+                        </div>
+                        <div class="item__price">CHF 8.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Süsskartoffel-Pommes mit Aioli</div>
+                            <div class="item__desc">Süsskartoffeln mit würziger Gewürzmischung, dazu cremiger Aioli-Dip.
+                                (250 g)</div>
+                        </div>
+                        <div class="item__price">CHF 9.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Nachos</div>
+                        </div>
+                        <div class="item__price">CHF 8.–</div>
+                    </div>
+                </div>
+
+                <div class="sun-divider">· · ☀️ · ·</div>
+
+                <!-- Chicken Wings -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🍗</span>
+                    <h2 class="sub-head__label">Chicken Wings</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Chicken Wings</div>
+                            <div class="item__desc">Saftige Wings mit Würzung. Pro Stück oder als Portion.</div>
+                        </div>
+                    </div>
+                    <div class="portions">
+                        <div class="portion-chip"><strong>CHF 3.50</strong>1 Wing</div>
+                        <div class="portion-chip"><strong>CHF 9.50</strong>3er Portion</div>
+                        <div class="portion-chip"><strong>CHF 15.50</strong>5er Portion</div>
+                        <div class="portion-chip"><strong>CHF 30.–</strong>10er Portion</div>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <span class="notice__icon">✅</span>
+                    Alle Snacks frisch zubereitet. Allergien? Frag unser Personal!
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- TAB: SWEET SPOT -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="tab-sweet" class="tab-section" aria-label="Sweet Spot">
+            <div class="menu-page">
+
+                <div class="time-badge">🍦 Sweet Spot</div>
+
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Kuchen</div>
+                        </div>
+                        <div class="item__price">CHF 7.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Kaffee &amp; Kuchen Combo</div>
+                            <div class="item__desc">Kaffee nach Wahl &amp; hausgemachter Kuchen</div>
+                            <div class="item__tags"><span class="tag tag--best">🎯 Kombi-Deal</span></div>
+                        </div>
+                        <div class="item__price">CHF 9.–</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Kugel Glace</div>
+                            <div class="item__desc">Von unserer Glace-Station</div>
+                        </div>
+                        <div class="item__price">CHF 3.90</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Waffel mit Glace</div>
+                        </div>
+                        <div class="item__price">CHF 7.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Crêpes</div>
+                            <div class="item__desc">Nutella, Zucker oder Glace</div>
+                        </div>
+                        <div class="item__price">CHF 7.50</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- TAB: À LA CARTE -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section id="tab-alacarte" class="tab-section" aria-label="À la carte">
+            <div class="menu-page">
+
+                <div class="time-badge">🕦 Ab 11:30 Uhr bis Feierabend</div>
+                <div class="notice" style="margin-bottom:16px">
+                    <span class="notice__icon">🎁</span>
+                    <span>Bis 14:00 Uhr gibt es einen Softdrink <strong>gratis</strong> dazu!</span>
+                </div>
+
+                <!-- Hauptgerichte -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🍔</span>
+                    <h2 class="sub-head__label">Hauptgerichte</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Chef Burger</div>
+                            <div class="item__desc">Premium Rindfleisch-Patty, Cheddar, Bacon, Salat, Tomate, Gurke,
+                                Spezial-Sauce. Mit Pommes oder Salat.</div>
+                        </div>
+                        <div class="item__price">CHF 24.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Veggie Burger 🌱</div>
+                            <div class="item__desc">Gemüse-Patty, gegrilltes Gemüse, Avocado, Salat, Tomate,
+                                Veggie-Sauce. Mit Pommes oder Salat.</div>
+                            <div class="item__tags"><span class="tag tag--veg">Vegetarisch</span></div>
+                        </div>
+                        <div class="item__price">CHF 23.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Fish Knusperli</div>
+                            <div class="item__desc">Knuspriges Fischfilet, Tartar-Sauce, Zitrone. Mit Pommes.</div>
+                            <div class="item__tags"><span class="tag tag--fish">Fisch</span></div>
+                        </div>
+                        <div class="item__price">CHF 22.50</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Entrecôte 200 g 🔥</div>
+                            <div class="item__desc">Argentinisches Entrecôte, Kräuterbutter, Sauce nach Wahl. Mit Pommes
+                                oder Salat.</div>
+                            <div class="item__tags"><span class="tag tag--hot">Premium</span></div>
+                        </div>
+                        <div class="item__price">CHF 27.50</div>
+                    </div>
+                </div>
+
+                <div class="sun-divider">· · ☀️ · ·</div>
+
+                <!-- Extras -->
+                <div class="sub-head">
+                    <span class="sub-head__emoji">🌭</span>
+                    <h2 class="sub-head__label">Extras</h2>
+                    <div class="sub-head__line"></div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Bratwurst vom Grill</div>
+                            <div class="item__desc">Mit Brot &amp; Senf</div>
+                        </div>
+                        <div class="item__price">CHF 10.90<small>Mit Pommes CHF 15.–</small></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item__info">
+                            <div class="item__name">Hot Dog – unser Style</div>
+                        </div>
+                        <div class="item__price">CHF 5.90<small>Mit Pommes CHF 10.–</small></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
     </main>
 
@@ -437,6 +1067,16 @@
         Allergene auf Anfrage an der Bar.<br><br>
         &copy; 2026 · Guten Appetit! ☀️
     </footer>
+
+    <script>
+        function switchTab(id, btn) {
+            document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + id).classList.add('active');
+            btn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 
