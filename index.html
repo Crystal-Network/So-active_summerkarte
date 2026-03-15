@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Sommerkarte – Frische Küche & Genuss unter freiem Himmel" />
+    <meta name="description" content="Sommerkarte – Frisch vom Holzgrill & Genuss unter freiem Himmel" />
     <title>Sommerkarte</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -433,6 +433,94 @@
             font-size: 0.7rem;
             line-height: 1.8;
         }
+
+        /* ─── MODAL ─── */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px 24px;
+            max-width: 340px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(120, 83, 30, 0.2);
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.3s;
+            border: 1px solid var(--line);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-emoji {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--warm);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .modal-text {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .modal-btn {
+            background: var(--sun);
+            color: var(--warm);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            width: 100%;
+        }
+
+        .modal-btn:hover {
+            background: var(--sun-light);
+            transform: translateY(-1px);
+        }
+
+        .modal-btn:active {
+            transform: translateY(1px);
+        }
     </style>
 </head>
 
@@ -445,7 +533,7 @@
         <div class="hero__text">
             <p class="hero__eyebrow">Sommer 2026</p>
             <h1 class="hero__title">Sommerkarte</h1>
-            <p class="hero__sub">Frische Küche · Saisonale Zutaten</p>
+            <p class="hero__sub">Frisch vom Holzgrill & Genuss unter freiem Himmel</p>
         </div>
     </header>
 
@@ -1179,6 +1267,17 @@
 
     </main>
 
+    <!-- ORDER MODAL -->
+    <div id="order-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-emoji">🍹</div>
+            <h2 class="modal-title">Herzlich Willkommen!</h2>
+            <p class="modal-text">Bitte alle Speisen und Getränke direkt <strong>an der Bar
+                    bestellen, Danke!</strong>.</p>
+            <button class="modal-btn" onclick="closeOrderModal()">Verstanden</button>
+        </div>
+    </div>
+
     <footer class="site-footer">
         Alle Preise in CHF inkl. MwSt.<br>
         Allergene auf Anfrage an der Bar.<br><br>
@@ -1193,6 +1292,17 @@
             btn.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        function closeOrderModal() {
+            document.getElementById('order-modal').classList.remove('active');
+        }
+
+        // Show modal on page load after a slight delay
+        window.onload = function () {
+            setTimeout(() => {
+                document.getElementById('order-modal').classList.add('active');
+            }, 600);
+        };
     </script>
 
 </body>
